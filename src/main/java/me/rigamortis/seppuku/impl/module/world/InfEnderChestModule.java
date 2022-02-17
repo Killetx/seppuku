@@ -45,7 +45,7 @@ public final class InfEnderChestModule extends Module {
     @Override
     public void onDisable() {
         super.onDisable();
-        if (Minecraft.getMinecraft().world != null) {
+        if (this.enderChestDesynced && Minecraft.getMinecraft().world != null) {
             Minecraft.getMinecraft().player.connection.sendPacket(new CPacketCloseWindow(Minecraft.getMinecraft().player.inventoryContainer.windowId));
             this.resetBackupEnderChest();
             Seppuku.INSTANCE.logChat("Container closed.");
